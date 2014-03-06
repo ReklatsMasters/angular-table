@@ -1,12 +1,12 @@
 {
   "name": "angularTable",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "main":["src/main/webapp/css/lib/angular-table.css","src/main/webapp/js/lib/angular-table.js"],
   "dependencies": {
     "angular": ">=1.0.7"
   },
   "devDependencies": {
-    "jquery": "~2.0.3",
+    "jquery": ">=1.8.0",
     "angular-mocks": ">=1.0.7",
     "angular-scenario": ">=1.0.7"
   }

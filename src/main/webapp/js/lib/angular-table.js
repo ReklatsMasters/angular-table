@@ -261,23 +261,25 @@ angular.module('angular-table', [])
 
             if(isHeader) {
                 angular.forEach(tElement.children(), function(childColumn, index) {
-                    if(angular.element(childColumn).attr('sortable') === 'true') {
+		    var _el = angular.element(childColumn);
+
+                    if( _el[0].hasAttribute('sortable') ) {
                         // add the ascending sort icon
-                        angular.element(childColumn).find('sort-arrow-descending').attr('ng-show',
-                            'SortState.sortExpression == \'' + angular.element(childColumn).attr('sort-field-name') +
-                            '\' && !SortState.sortDirectionToColumnMap[\'' + angular.element(childColumn).attr('sort-field-name') + '\']').addClass('angularTableDefaultSortArrowAscending');
+                        _el.find('sort-arrow-descending').attr('ng-show',
+                            'SortState.sortExpression == \'' + _el.attr('sort-field-name') +
+                            '\' && !SortState.sortDirectionToColumnMap[\'' + _el.attr('sort-field-name') + '\']').addClass('angularTableDefaultSortArrowAscending');
 
                         // add the descending sort icon
-                        angular.element(childColumn).find('sort-arrow-ascending').attr('ng-show',
-                            'SortState.sortExpression == \'' + angular.element(childColumn).attr('sort-field-name') +
-                            '\' && SortState.sortDirectionToColumnMap[\'' + angular.element(childColumn).attr('sort-field-name') + '\']').addClass('angularTableDefaultSortArrowDescending');
+                        _el.find('sort-arrow-ascending').attr('ng-show',
+                            'SortState.sortExpression == \'' + _el.attr('sort-field-name') +
+                            '\' && SortState.sortDirectionToColumnMap[\'' + _el.attr('sort-field-name') + '\']').addClass('angularTableDefaultSortArrowDescending');
 
                         // add the sort click handler
-                        angular.element(childColumn).attr('ng-click', 'setSortExpression(\'' +
-                            angular.element(childColumn).attr('sort-field-name') + '\')');
+                        _el.attr('ng-click', 'setSortExpression(\'' +
+                            _el.attr('sort-field-name') + '\')');
 
                         // remove the sort field name attribute from the dsl
-                        angular.element(childColumn).removeAttr('sort-field-name');
+                        _el.removeAttr('sort-field-name');
                     }
                 });
             }
